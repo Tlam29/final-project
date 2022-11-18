@@ -2,6 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Products from '../data'
 
+
+
+
 const Product = () => {
   return (
     <main>
@@ -39,6 +42,8 @@ const Product = () => {
                       <div className="d-flex justify-content-between align-items-center">
                         <span>Price: <strong className='price'>{product.price}</strong></span>
                         <Link to={`/products/${product.id}`}>DETAILS &#8594;</Link>
+                        <button 
+                        className="btn btn-primary">Add to Cart</button>
                       </div>
                     </div>
                   </div>

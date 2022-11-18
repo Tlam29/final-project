@@ -9,12 +9,13 @@ const Header = () => {
           <div className='logo'>
             <Link to='/' className='brand'>TMG</Link>
           </div>
-          <div className='nav nav-pills'>
-            <Link to='/' className='brand'>Home</Link>
-            <Link to='about' className=''>About</Link>
-            <Link to='products' className=''>Products</Link>
-            <Link to='posts' className=''>Posts</Link>
-          </div>
+          <nav className='nav nav-pills'>
+            <NavLink to='/' className={(navData)=> navData.isActive ? 'nav-link active' : 'nav-link'}>Home</NavLink>
+            <NavLink to='about' className={(navData)=> navData.isActive ? 'nav-link active' : 'nav-link'}>About</NavLink>
+            <NavLink to='products' className={(navData)=> navData.isActive ? 'nav-link active' : 'nav-link'}>Products</NavLink>
+            <NavLink to='posts' className={(navData)=> navData.isActive ? 'nav-link active' : 'nav-link'}>Posts</NavLink>
+            <NavLink to='cart' className={(navData)=> navData.isActive ? 'nav-link active' : 'nav-link'}>Cart</NavLink>
+          </nav>
         </div>
       </div>
     </header>

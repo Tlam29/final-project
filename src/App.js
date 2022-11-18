@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.css'
 import './App.css'
@@ -13,8 +13,10 @@ import Posts from './pages/Post'
 import Products from './pages/Product'
 import SingleProduct from './pages/SingleProduct'
 import Error from './pages/Error'
+import Cart from './pages/Cart'
 
 function App() {
+  const [cartItems, setCartItems] = useState([]);
   return (
     <div className='App'>
       <BrowserRouter>
@@ -25,6 +27,7 @@ function App() {
           <Route path='products' element={<Products/>}/>
           <Route path='products/:productId' element={<SingleProduct/>}/>
           <Route path='posts' element={<Posts/>}/>
+          <Route path='cart'  element={<Cart cartItems={cartItems}/>}/>
           <Route path='*' element={<Error/>}/>
         </Routes>
         <Footer />
