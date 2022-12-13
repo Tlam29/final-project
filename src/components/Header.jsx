@@ -7,7 +7,7 @@ const Header = () => {
       <div className='container'>
         <div className='d-flex justify-content-between align-items-center'>
           <div className='logo'>
-            <Link to='/' className='brand'>TMG</Link>
+            <Link to='/' className='brand'>TTT</Link>
           </div>
           <nav className='nav nav-pills'>
             <NavLink to='/' className={(navData)=> navData.isActive ? 'nav-link active' : 'nav-link'}>Home</NavLink>

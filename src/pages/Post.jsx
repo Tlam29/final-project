@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-const Post = () => {
+const Post = (onAdd) => {
   const [posts , setPosts] = useState([]);
    const [loader , setLoader] = useState(true);
 
@@ -11,11 +11,12 @@ const Post = () => {
     console.log(posts)
    }, []);
    async function fetchPosts(){
-    await fetch('https://jsonplaceholder.typicode.com/posts')
+    await fetch('https://jsonplaceholder.typicode.com/posts?_limit=10')
     .then(response => response.json())
     .then(json => setPosts(json))
     .then(setLoader(false))
    }
+   
   return (
    <main className='posts'>
     <div className="pg-header d-flex justify-content-center align-items-center">
@@ -26,8 +27,11 @@ const Post = () => {
             
           </div>
           <div className="col-lg-4 d-flex justify-content-evenly">
-            <textarea name="userPost" id="userPost" cols="20" rows="1"></textarea>
-            <button className="btn btn-primary">Submit</button>
+            <form>
+              <input type="text" className='form-group' placeholder='Title'/>
+              <input type="text"  className='form-group' placeholder='Body'/>
+              <button className='btn btn-dark m-2'>Submit</button>
+            </form>
           </div>
           <div className="col-lg-4">
             <nav aria-label='breadcrumb'>

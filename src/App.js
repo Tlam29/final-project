@@ -13,10 +13,27 @@ import Posts from './pages/Post'
 import Products from './pages/Product'
 import SingleProduct from './pages/SingleProduct'
 import Error from './pages/Error'
-import Cart from './pages/Cart'
+import data from '../src/data'
 
 function App() {
-  const [cartItems, setCartItems] = useState([]);
+  const {products} = data
+  
+  const onAdd = async(title, body) => {
+    await fetch('https://jsonplaceholder.typicode.com/posts',{
+      method: 'POST',
+      body: JSON.stringify({
+        title: title,
+        body: body,
+        userId: 1,
+      }),
+      headers:{
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+    .then((response) => response.json())
+    .then((json) => console.log(json))
+  }
+
   return (
     <div className='App'>
       <BrowserRouter>
@@ -27,7 +44,6 @@ function App() {
           <Route path='products' element={<Products/>}/>
           <Route path='products/:productId' element={<SingleProduct/>}/>
           <Route path='posts' element={<Posts/>}/>
-          <Route path='cart'  element={<Cart cartItems={cartItems}/>}/>
           <Route path='*' element={<Error/>}/>
         </Routes>
         <Footer />
